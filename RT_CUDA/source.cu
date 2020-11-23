@@ -165,5 +165,8 @@ int main() {
 	printf("Now drawing image \n");
 
 	drawImage(h_pixels, imageWidth, imageHeight,filename);
+	printf("Image saved as %s \n",filename);
+	printf("Press any key to exit...");
+	_getch();
 	return 0;
 }
