@@ -86,8 +86,8 @@ __host__ void preset_2(sphere* h_spheres, int& objCount, int& lightCount) {
 }
 
 
-void drawImage(vector3* image, int width, int height) {
-	Image img(width, height, "example.bmp");
+void drawImage(vector3* image, int width, int height,char* filename) {
+	Image img(width, height, filename);
 	for (int i = 0; i < width; ++i) {
 		for (int j = 0; j < height; ++j) {
 			int r = std::min(float(1), image[j * width + i].x) * 255;
@@ -104,6 +104,7 @@ int main() {
 	int lightCount;
 	int imageWidth;
 	int imageHeight;
+	char* filename =new char[50];
 
 	printf("Number of spheres :");
 	scanf("%d", &objCount);
@@ -113,6 +114,9 @@ int main() {
 	scanf("%d", &imageWidth);
 	printf("Image Height:");
 	scanf("%d", &imageHeight);
+	printf("Output file name:");
+	scanf("%s", filename);
+
 
 
 	sphere* h_spheres;
@@ -160,6 +164,6 @@ int main() {
 	printf("Elapsed time: %f ms\n", time);
 	printf("Now drawing image \n");
 
-	drawImage(h_pixels, imageWidth, imageHeight);
+	drawImage(h_pixels, imageWidth, imageHeight,filename);
 	return 0;
 }
